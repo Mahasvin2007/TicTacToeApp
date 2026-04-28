@@ -1,17 +1,35 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+/**
+ * TicTacToe
+ * UC5 validates whether a move is inside the board boundaries
+ * and whether the selected cell is empty.
+ */
 public class TicTacToe {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+    static char[][] board = {
+            {'-', '-', '-'},
+            {'-', '-', '-'},
+            {'-', '-', '-'}
+    };
+
+    /**
+     * Entry point of the program. Tests the validation logic
+     * using sample row and column values.
+     */
+    public static void main(String[] args) {
+        System.out.println(isValidMove(1, 1)); // true — center cell is empty
+    }
+
+    /**
+     * Checks if the given row and column are within bounds
+     * and if the target cell is empty.
+     * Input: Row, Column
+     * Output: true if valid, false otherwise.
+     */
+    static boolean isValidMove(int row, int col) {
+        if (row < 0 || row > 2) return false;
+        if (col < 0 || col > 2) return false;
+        return board[row][col] == '-';
     }
 }
